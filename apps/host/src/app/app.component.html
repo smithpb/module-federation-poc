@@ -1,5 +1,16 @@
-<ul class="remote-menu">
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="angularRemote">AngularRemote</a></li>
-</ul>
+<h1>Host Angular App</h1>
+<a [routerLink]="'/marketing'">React App</a>
+<div>
+  <button (click)="loadAngular()">Load Angular component</button>
+</div>
+<!-- <div>
+  <button (click)="loadReact()">Load React component</button>
+</div> -->
+<!-- <div>
+  <button (click)="loadVue()">Load Vue component</button>
+</div> -->
+
+<div #angularViewContainerRef></div>
+<div #reactElementRef></div>
+<!-- <div #vueElementRef></div> -->
 <router-outlet></router-outlet>

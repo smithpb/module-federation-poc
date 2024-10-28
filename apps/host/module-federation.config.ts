@@ -14,7 +14,10 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: ['angularRemote'],
+  remotes: [
+    'angularRemote',
+    // ['reactRemoteApp', 'marketing@http://localhost:8081/remoteEntry.js'],
+  ],
 };
 
 export default config;
