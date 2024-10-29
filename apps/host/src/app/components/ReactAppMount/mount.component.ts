@@ -1,7 +1,9 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+
 const ROUTE_BASE = '/marketing';
 @Component({
   selector: 'app-react-mount',
@@ -15,7 +17,11 @@ export class ReactAppMountComponent implements OnInit {
   @ViewChild('reactElementRef', { read: ElementRef, static: true })
   reactElementRef!: ElementRef;
 
-  constructor(private router: Router, private location: Location) {}
+  constructor(
+    private router: Router,
+    private location: Location,
+    private loginService: LoginService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const { mount } = await loadRemoteModule({
@@ -32,6 +38,7 @@ export class ReactAppMountComponent implements OnInit {
           this.location.go(endUrl);
         }
       },
+      toggleLoggedIn: () => this.loginService.toggleLoggedIn(),
     });
 
     this.location.onUrlChange(onParentNavigate);

@@ -1,12 +1,11 @@
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
-  // {
-  //   path: 'angularRemote',
-  //   loadChildren: () =>
-  //     import('angularRemote/Routes').then((m) => m.remoteRoutes),
-  // },
+  {
+    path: '',
+    loadChildren: () =>
+      import('angularRemote/Routes').then((m) => m.remoteRoutes),
+  },
   {
     path: 'marketing',
     loadComponent: () =>
@@ -14,8 +13,8 @@ export const appRoutes: Route[] = [
         (m) => m.ReactAppMountComponent
       ),
   },
-  {
-    path: '',
-    component: NxWelcomeComponent,
-  },
+  // {
+  //   path: '',
+  //   component: NxWelcomeComponent,
+  // },
 ];

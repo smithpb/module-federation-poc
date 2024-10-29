@@ -1,7 +1,23 @@
-<h1>Host Angular App</h1>
-<a [routerLink]="'/marketing'">React App</a>
-<div>
-  <button (click)="loadAngular()">Load Angular component</button>
+<div class="page">
+  <div class="main-header">
+    <h1 [routerLink]="'/'">Host Angular App</h1>
+    <p>{{ login() ? 'Logged in' : 'Log in' }}</p>
+  </div>
+  <div class="side-nav">
+    <ul>
+      <li>
+        <a [routerLink]="'/marketing'">React App</a>
+      </li>
+    </ul>
+    <button (click)="loadAngular()">Load Angular component</button>
+    <button (click)="toggle()">Toggle</button>
+  </div>
+  <div class="console">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="foot">
+    <div #angularViewContainerRef></div>
+  </div>
 </div>
 <!-- <div>
   <button (click)="loadReact()">Load React component</button>
@@ -10,7 +26,5 @@
   <button (click)="loadVue()">Load Vue component</button>
 </div> -->
 
-<div #angularViewContainerRef></div>
-<div #reactElementRef></div>
+<!-- <div #reactElementRef></div> -->
 <!-- <div #vueElementRef></div> -->
-<router-outlet></router-outlet>

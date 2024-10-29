@@ -3,9 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
+  selector: 'app-home',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  selector: 'app-angular-remote-entry',
-  template: `<router-outlet></router-outlet>`,
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
 })
-export class RemoteEntryComponent {}
+export class HomeComponent {
+  getLocalStorage() {
+    console.log(window.localStorage.getItem('test'));
+  }
+}

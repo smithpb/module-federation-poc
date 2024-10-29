@@ -1,22 +1,26 @@
 import {
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { LoginService } from './services/login.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule, CommonModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private loginService: LoginService) {}
   title = 'host';
+  login = this.loginService.isLoggedIn;
 
   // to render the react web component
   @ViewChild('reactElementRef', { read: ElementRef, static: true })
@@ -30,25 +34,27 @@ export class AppComponent {
   //  @ViewChild("vueElementRef", { static: true })
   //  vueElementRef!: ElementRef;
 
-  //  constructor(private renderer: Renderer2) {
-
-  //  }
+  ngOnInit(): void {
+    window.localStorage.setItem('test', 'foo');
+  }
 
   async loadAngular(): Promise<void> {
     const m = await import('angularRemote/EntryComponent');
-    const ref = this.angularViewContainerRef.createComponent(
-      m.RemoteEntryComponent
-    );
+    this.angularViewContainerRef.createComponent(m.HomeComponent);
   }
 
   async loadReact(): Promise<void> {
-    const { mount } = await loadRemoteModule({
+    await loadRemoteModule({
       remoteEntry: 'http://localhost:8081/remoteEntry.js',
       remoteName: 'marketing',
       exposedModule: './TestComponent',
     });
-    mount();
+
     const e = document.createElement('react-remote-test-component-element');
     this.reactElementRef.nativeElement.appendChild(e);
+  }
+
+  toggle() {
+    this.loginService.toggleLoggedIn();
   }
 }
