@@ -13,8 +13,4 @@ export const appRoutes: Route[] = [
         (m) => m.ReactAppMountComponent
       ),
   },
-  // {
-  //   path: '',
-  //   component: NxWelcomeComponent,
-  // },
 ];

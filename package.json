@@ -33,6 +33,7 @@
     "@nx/jest": "20.0.3",
     "@nx/js": "20.0.3",
     "@nx/playwright": "20.0.3",
+    "@nx/react": "^20.0.3",
     "@nx/web": "20.0.3",
     "@nx/webpack": "20.0.3",
     "@nx/workspace": "20.0.3",

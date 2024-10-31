@@ -39,8 +39,8 @@ export class AppComponent implements OnInit {
   }
 
   async loadAngular(): Promise<void> {
-    const m = await import('angularRemote/EntryComponent');
-    this.angularViewContainerRef.createComponent(m.HomeComponent);
+    const m = await import('footer/Entry');
+    this.angularViewContainerRef.createComponent(m.RemoteEntryComponent);
   }
 
   async loadReact(): Promise<void> {

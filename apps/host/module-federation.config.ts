@@ -17,6 +17,7 @@ const config: ModuleFederationConfig = {
   remotes: [
     'angularRemote',
     // ['reactRemoteApp', 'marketing@http://localhost:8081/remoteEntry.js'],
+    'footer',
   ],
 };
 
