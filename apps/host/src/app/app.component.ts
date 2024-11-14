@@ -5,7 +5,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { loadRemoteModule } from '@angular-architects/module-federation';
+// import { loadRemoteModule } from '@angular-architects/module-federation';
 import { RouterModule } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { CommonModule } from '@angular/common';
@@ -43,16 +43,16 @@ export class AppComponent implements OnInit {
     this.angularViewContainerRef.createComponent(m.RemoteEntryComponent);
   }
 
-  async loadReact(): Promise<void> {
-    await loadRemoteModule({
-      remoteEntry: 'http://localhost:8081/remoteEntry.js',
-      remoteName: 'marketing',
-      exposedModule: './TestComponent',
-    });
+  // async loadReact(): Promise<void> {
+  //   await loadRemoteModule({
+  //     remoteEntry: 'http://localhost:8081/remoteEntry.js',
+  //     remoteName: 'marketing',
+  //     exposedModule: './TestComponent',
+  //   });
 
-    const e = document.createElement('react-remote-test-component-element');
-    this.reactElementRef.nativeElement.appendChild(e);
-  }
+  //   const e = document.createElement('react-remote-test-component-element');
+  //   this.reactElementRef.nativeElement.appendChild(e);
+  // }
 
   toggle() {
     this.loginService.toggleLoggedIn();

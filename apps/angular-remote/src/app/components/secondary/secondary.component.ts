@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-nested',
+  selector: 'app-secondary',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './nested.component.html',
-  styleUrl: './nested.component.scss',
+  templateUrl: './secondary.component.html',
+  styleUrl: './secondary.component.scss',
 })
-export class NestedComponent {}
+export class SecondaryComponent {}

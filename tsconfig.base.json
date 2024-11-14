@@ -21,11 +21,11 @@
       "angularRemote/Routes": [
         "apps/angular-remote/src/app/remote-entry/entry.routes.ts"
       ],
-      "footer/Routes": [
-        "apps/angular-footer/src/app/remote-entry/entry.routes.ts"
-      ],
       "footer/Entry": [
         "apps/angular-footer/src/app/remote-entry/entry.component.ts"
+      ],
+      "footer/Routes": [
+        "apps/angular-footer/src/app/remote-entry/entry.routes.ts"
       ]
     }
   },

@@ -8,9 +8,14 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'marketing',
-    loadComponent: () =>
-      import('./components/ReactAppMount/mount.component').then(
-        (m) => m.ReactAppMountComponent
-      ),
+    children: [
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./components/ReactAppMount/mount.component').then(
+            (m) => m.ReactAppMountComponent
+          ),
+      },
+    ],
   },
 ];

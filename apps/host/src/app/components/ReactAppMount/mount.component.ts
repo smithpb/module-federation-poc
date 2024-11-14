@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
 const ROUTE_BASE = '/marketing';
