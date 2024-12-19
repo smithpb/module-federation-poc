@@ -8,7 +8,9 @@ import {
 // import { loadRemoteModule } from '@angular-architects/module-federation';
 import { RouterModule } from '@angular/router';
 import { LoginService } from './services/login.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
+
+type RouteEvent = CustomEvent<string>;
 
 @Component({
   standalone: true,
@@ -18,7 +20,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private location: Location) {}
   title = 'host';
   login = this.loginService.isLoggedIn;
 
@@ -36,6 +38,24 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     window.localStorage.setItem('test', 'foo');
+
+    const appNavigated = ({ detail }: RouteEvent) => {
+      if (detail === location.pathname) {
+        return;
+      }
+      this.location.go(detail);
+    };
+    window.addEventListener('remote', appNavigated as EventListener);
+
+    this.location.onUrlChange(() => {
+      if (location.pathname.startsWith('/chat')) {
+        window.dispatchEvent(
+          new CustomEvent('host', {
+            detail: location.pathname.replace('/chat', ''),
+          })
+        );
+      }
+    });
   }
 
   async loadAngular(): Promise<void> {

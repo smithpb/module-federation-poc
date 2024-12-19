@@ -26,7 +26,8 @@
       ],
       "footer/Routes": [
         "apps/angular-footer/src/app/remote-entry/entry.routes.ts"
-      ]
+      ],
+      "windowEvent/Module": ["apps/react-remote/src/bootstrap.tsx"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -18,4 +18,16 @@ export const appRoutes: Route[] = [
       },
     ],
   },
+  {
+    path: 'contact',
+    children: [
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./components/WindowEventMount/mount.component').then(
+            (m) => m.MountComponent
+          ),
+      },
+    ],
+  },
 ];
